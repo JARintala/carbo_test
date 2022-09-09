@@ -32,7 +32,7 @@ class CalculatorService:
 
             # Lasketaan maitotilan koko karja
             # karja_lkm = cf.mkarjaluvut(basicCattleAttributesList, klk_pcs, vk_p)
-            numberOfCows = cf.mkarjaluvut(
+            numberOfCows = cf.calculateDairyCattleCount(
                 basicCattleAttributesList=basicCattleAttributesList,
                 averageCowCount=y.averageCowCount,
                 calfMortality=y.calfMortality,
@@ -45,12 +45,14 @@ class CalculatorService:
 
             # Ajetaan Karjatiedot
             # karja_massa = cf.mkarjamassat(lkp_kg)
-            massOfCattle = cf.mkarjamassat(
+            massOfCattle = cf.calculateDairyCattleMassAndAttributes(
                 averageWeightOfDairyCows=y.averageWeightOfDairyCows
             )
 
             # Lasketaan karjan massa, liha, typpi ja fosfori
-            cattleCompleted = cf.mliha_n_p(numberOfCows, massOfCattle)
+            cattleCompleted = cf.calculateMassOfDairyCattleMeatNAndP(
+                numberOfCows, massOfCattle
+            )
             cattleGroups = [
                 "Umpilehmat",
                 "Syntyneet vasikat",

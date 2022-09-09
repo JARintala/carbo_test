@@ -5,7 +5,7 @@ import numpy as np
 # Purpose:     Laskee maitokarjamäärän tunnusluvuista
 # -------------------------------------------------------------------------------
 class CattleFunctions:
-    def mkarjaluvut(
+    def calculateDairyCattleCount(
         basicCattleAttributesList, averageCowCount, calfMortality
     ):  # Syötteenä: Karjatunnuslista, Lehmälkm, Vasikkakuoleisuus
 
@@ -77,7 +77,9 @@ class CattleFunctions:
     # Purpose:     Lasketaan maitokarjan keskimääräiset painot ja muut tiedot
     # -------------------------------------------------------------------------------
 
-    def mkarjamassat(averageWeightOfDairyCows):  # Syötteenä Lypsylehmän keskipaino
+    def calculateDairyCattleMassAndAttributes(
+        averageWeightOfDairyCows,
+    ):  # Syötteenä Lypsylehmän keskipaino
         # Järjestys: factor, intercept
         karja_factor_list = [
             [1.000000, 0.000000],  # Umpilehmät
@@ -114,7 +116,9 @@ class CattleFunctions:
     # Purpose:     Lasketaan maitokarjan kokonaismassa, -liha, N ja P
     # -------------------------------------------------------------------------------
 
-    def mliha_n_p(numberOfCows, massOfCattle):  # Syötteenä karjaluvut ja karjamassa
+    def calculateMassOfDairyCattleMeatNAndP(
+        numberOfCows, massOfCattle
+    ):  # Syötteenä karjaluvut ja karjamassa
         # Lasketaan kokonaismassa
         mmassa = numberOfCows * massOfCattle
 
@@ -156,7 +160,7 @@ class CattleFunctions:
 
     # Syöttöjärjestys:
     # Lehmä lkm, Poikimaväli, Ummessaolokausi, Maitotuotos, Rasva, Proteiini, Laktoosi, Meijerimaito
-    def mmaito(a, b, c, d, e, f, g, h):
+    def calculateMilkProductionAndConcentrations(a, b, c, d, e, f, g, h):
 
         # Lasketaan lypsy- ja ruokintapäivien määrä
         lypsy_pv = 365 * (b - c) / b
